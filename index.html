@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoración Nocturna Mexicana | San Juan Bautista</title>
+
+    <!-- Fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* =========================================================
+           VARIABLES DE COLOR (Rojo y Dorado Solemnes)
+        ========================================================= */
+        :root {
+            --rojo-principal: #8B0000;
+            --rojo-oscuro: #5C0000;
+            --rojo-brillante: #B22222;
+            --dorado: #D4AF37;
+            --dorado-claro: #F4D77A;
+            --dorado-oscuro: #B8860B;
+            --blanco: #FFFFFF;
+            --crema: #FFFDF7;
+            --negro: #17120F;
+            --gris: #5F5F5F;
+            --gris-claro: #F8F5EE;
+
+            --sombra: 0 10px 30px rgba(92, 0, 0, 0.18);
+            --transicion: all 0.3s ease;
+        }
+
+        /* =========================================================
+           CONFIGURACIÓN GENERAL
+        ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--blanco);
+            color: var(--negro);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* =========================================================
+           NAVEGACIÓN
+        ========================================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-custom {
+            min-height: 80px;
+            padding: 12px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, var(--rojo-oscuro), var(--rojo-principal));
+            border-bottom: 3px solid var(--dorado);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--blanco);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--dorado);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            position: relative;
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 500;
+            transition: var(--transicion);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 3px;
+            width: 0;
+            height: 2px;
+            background: var(--dorado);
+            transform: translateX(-50%);
+            transition: var(--transicion);
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado-claro);
+        }
+
+        .nav-links a:hover::after {
+            width: 70%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--dorado);
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(60, 0, 0, 0.85), rgba(92, 0, 0, 0.92)),
+                        radial-gradient(circle at center, var(--dorado-oscuro), var(--rojo-oscuro) 70%);
+            color: var(--blanco);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: aparecer 1s ease;
+        }
+
+        .badge-hero {
+            display: inline-block;
+            padding: 8px 22px;
+            margin-bottom: 20px;
+            color: var(--dorado-claro);
+            border: 1px solid var(--dorado);
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5.5vw, 4.5rem);
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--dorado-claro);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            color: #FFF8E7;
+        }
+
+        /* =========================================================
+           BOTONES
+        ========================================================= */
+        .btn-custom {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border: 2px solid var(--dorado);
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+            color: var(--negro);
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transicion);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-4px);
+            background: var(--blanco);
+            color: var(--rojo-principal);
+            border-color: var(--dorado);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* =========================================================
+           SECCIONES & TÍTULOS
+        ========================================================= */
+        .section {
+            padding: 90px 6%;
+            background: var(--blanco);
+        }
+
+        .bg-light-custom {
+            background: linear-gradient(180deg, var(--crema), var(--blanco));
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--rojo-principal);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: "✦";
+            display: block;
+            margin: 10px auto 0;
+            color: var(--dorado);
+            font-size: 22px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gris);
+            margin-bottom: 50px;
+        }
+
+        /* =========================================================
+           TARJETAS GENERALES Y FOTOS
+        ========================================================= */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card-custom {
+            padding: 35px 25px;
+            text-align: center;
+            background: var(--blanco);
+            border-radius: 15px;
+            border-top: 5px solid var(--dorado);
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--rojo-principal);
+        }
+
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--rojo-principal);
+            color: var(--dorado-claro);
+            font-size: 30px;
+            border: 3px solid var(--dorado);
+            transition: var(--transicion);
+        }
+
+        .card-custom:hover .card-icon {
+            transform: rotate(8deg) scale(1.08);
+            background: var(--dorado);
+            color: var(--rojo-principal);
+        }
+
+        .img-card {
+            width: 75%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid var(--dorado);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* =========================================================
+           ESTACIÓN MAYOR
+        ========================================================= */
+        .estacion-mayor-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .estacion-card {
+            background: var(--crema);
+            border-radius: 15px;
+            padding: 30px;
+            border-top: 5px solid var(--rojo-principal);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        .estacion-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--dorado);
+        }
+
+        .estacion-card h3 {
+            color: var(--rojo-principal);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--dorado);
+            padding-bottom: 8px;
+        }
+
+        .estacion-card h4 {
+            color: var(--rojo-oscuro);
+            font-size: 1.05rem;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+        }
+
+        .estacion-card p, .estacion-card ul {
+            font-size: 0.95rem;
+            color: var(--gris);
+            margin-bottom: 10px;
+        }
+
+        .estacion-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .estacion-card ul li {
+            margin-bottom: 6px;
+        }
+
+        .estacion-card ul li i {
+            color: var(--dorado-oscuro);
+            margin-right: 6px;
+        }
+
+        /* =========================================================
+           ESTILOS BOOTSTRAP PERSONALIZADOS (EVENTOS Y CONFIRMACIÓN)
+        ========================================================= */
+        .card-evento-espigas {
+            border-left: 5px solid var(--dorado) !important;
+            background: var(--crema);
+        }
+
+        .card-evento-vigilia {
+            border-left: 5px solid var(--rojo-principal) !important;
+            background: var(--crema);
+        }
+
+        .badge-espigas {
+            background-color: var(--dorado) !important;
+            color: var(--negro) !important;
+            font-weight: 600;
+        }
+
+        .badge-vigilia {
+            background-color: var(--rojo-principal) !important;
+            color: var(--blanco) !important;
+            font-weight: 600;
+        }
+
+        .header-confirmacion {
+            background: linear-gradient(135deg, var(--rojo-oscuro), var(--rojo-principal));
+            border-bottom: 3px solid var(--dorado);
+            color: var(--blanco);
+        }
+
+        /* =========================================================
+           BANNER PARROQUIA
+        ========================================================= */
+        .banner-parroquia {
+            background: linear-gradient(rgba(92, 0, 0, 0.85), rgba(60, 0, 0, 0.85)),
+                        url('Parroquia.jpeg') center/cover no-repeat;
+            padding: 700px 20px;
+            text-align: center;
+            color: var(--blanco);
+            border-top: 4px solid var(--dorado);
+            border-bottom: 4px solid var(--dorado);
+            margin: 40px 0;
+        }
+
+        .banner-parroquia h2 {
+            color: var(--dorado-claro);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* =========================================================
+           CONTACTO & FORMULARIO
+        ========================================================= */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 22px;
+            margin-bottom: 20px;
+            background: var(--crema);
+            border-radius: 12px;
+            border-left: 4px solid var(--dorado);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transicion);
+        }
+
+        .contact-card:hover {
+            transform: translateX(6px);
+            border-left-color: var(--rojo-principal);
+        }
+
+        .contact-card > i {
+            font-size: 27px;
+            color: var(--rojo-principal);
+        }
+
+        .contact-card h4 {
+            color: var(--rojo-principal);
+            margin-bottom: 5px;
+        }
+
+        .contact-form {
+            padding: 35px;
+            background: var(--blanco);
+            border-radius: 15px;
+            border-top: 5px solid var(--rojo-principal);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--sombra);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--rojo-principal);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 2px solid #E5DCC8;
+            border-radius: 8px;
+            background: #FFFCF5;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: var(--transicion);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        /* =========================================
+           MESA DIRECTIVA
+        ========================================= */
+        .mesa-directiva {
+            padding: 90px 20px;
+            background: linear-gradient(135deg, #4A0000, var(--rojo-principal), #2E0000);
+            position: relative;
+            border-top: 4px solid var(--dorado);
+        }
+
+        .mesa-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .mesa-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .mesa-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid var(--dorado);
+            border-radius: 30px;
+            color: var(--dorado-claro);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .mesa-header h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--blanco);
+            font-weight: 800;
+        }
+
+        .mesa-header h2::after {
+            content: "";
+            display: block;
+            width: 90px;
+            height: 3px;
+            background: var(--dorado);
+            margin: 18px auto;
+        }
+
+        .directiva-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .directiva-card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 18px;
+            padding: 35px 20px;
+            text-align: center;
+            border-top: 5px solid var(--dorado);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: var(--transicion);
+        }
+
+        .directiva-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .directiva-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--rojo-principal);
+            color: var(--dorado-claro);
+            font-size: 1.7rem;
+            border: 3px solid var(--dorado);
+        }
+
+        .directiva-card h3 {
+            margin: 0 0 12px;
+            color: var(--rojo-principal);
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+        }
+
+        .directiva-card h4 {
+            margin: 0;
+            color: #333;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer {
+            background: var(--negro);
+            color: var(--dorado-claro);
+            text-align: center;
+            padding: 25px;
+            border-top: 2px solid var(--dorado);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           ANIMACIONES Y RESPONSIVE
+        ========================================= */
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .directiva-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 700px) {
+            .navbar-custom { padding: 10px 5%; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--rojo-oscuro);
+                padding: 15px 0;
+                border-bottom: 2px solid var(--dorado);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .directiva-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<!-- Modal de Aviso de Privacidad -->
+<div class="modal fade" id="modalPrivacidad" tabindex="-1" aria-labelledby="modalPrivacidadLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header header-confirmacion text-white">
+                <h5 class="modal-title font-cinzel fw-bold" id="modalPrivacidadLabel"><i class="bi bi-shield-lock-fill me-2"></i>Aviso de Privacidad de Datos</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-dark" style="font-size: 0.95rem; line-height: 1.6;">
+                <p><strong>Adoración Nocturna Mexicana – Sección San Juan Bautista</strong>, con domicilio en la Parroquia de San Juan Bautista en San Juan de las Huertas, Zinacantepec, Estado de México, es responsable del tratamiento y protección de sus datos personales.</p>
+                
+                <hr>
+                <h6 class="fw-bold text-danger">1. Datos Personales Recabados</h6>
+                <p>Para registrar su asistencia a eventos o responder a sus solicitudes de contacto, recabamos los siguientes datos a través de los formularios de este sitio web:</p>
+                <ul>
+                    <li>Nombre completo</li>
+                    <li>Sección de pertenencia (en caso de confirmación de asistencia)</li>
+                    <li>Número telefónico</li>
+                    <li>Mensaje u observaciones</li>
+                </ul>
+
+                <hr>
+                <h6 class="fw-bold text-danger">2. Finalidad del Tratamiento de Datos</h6>
+                <p>Sus datos personales se utilizan exclusivamente para los siguientes fines:</p>
+                <ul>
+                    <li>Confirmar e inventariar la asistencia a nuestras vigilias solemnes (Espigas, Aniversario, etc.).</li>
+                    <li>Atender y dar seguimiento a los mensajes de contacto remitidos a la Mesa Directiva.</li>
+                    <li>Mantener control de la participación de los hermanos adoradores.</li>
+                </ul>
+
+                <hr>
+                <h6 class="fw-bold text-danger">3. Proteccion y Transferencia de Datos</h6>
+                <p>Nos comprometemos a guardar estricta confidencialidad de la información proporcionada. Sus datos no serán compartidos, cedidos ni comercializados a ninguna persona u organización externa bajo ninguna circunstancia, utilizándose de forma exclusiva dentro del sistema interno de la sección.</p>
+
+                <hr>
+                <h6 class="fw-bold text-danger">4. Derechos ARCO</h6>
+                <p>Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales. Para ejercer estos derechos o solicitar la cancelación de su registro, puede comunicarse directamente con cualquier integrante de la Mesa Directiva o enviar un mensaje a través del formulario de contacto.</p>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <nav class="navbar-custom">
+            <div class="logo">
+                <img src="logo_anm.jpeg" alt="Logo ANM">
+                <span>ANM - San Juan Bautista, Zinacantepec</span>
+            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#que-es">¿Qué es?</a></li>
+                <li><a href="#estacion-mayor">Estación Mayor</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#mesa-directiva">Mesa Directiva</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="badge-hero">Adoración Nocturna Mexicana</span>
+            <h1>Sección San Juan Bautista, Zinacantepec, Mex.</h1>
+            <p>Vigilia, oración y amor constante a Jesús Sacramentado en el silencio de la noche.</p>
+            <a href="#que-es" class="btn-custom">Conoce más <i class="fa-solid fa-arrow-down ms-1"></i></a>
+        </div>
+    </section>
+
+    <!-- ¿Qué es la Adoración Nocturna? -->
+    <section id="que-es" class="section">
+        <div class="container">
+            <h2 class="section-title">¿Qué es la Adoración Nocturna?</h2>
+            <p class="section-subtitle">Un oasis de paz y reparación espiritual</p>
+            
+            <div class="cards-grid">
+                <div class="card-custom">
+                    <div class="card-icon"><i class="fa-solid fa-moon"></i></div>
+                    <h3>La Vigilia</h3>
+                    <p>Es una asociación de fieles católicos que se turnan durante las horas de la noche para adorar, alabar y reparar a Jesucristo presente en la Sagrada Eucaristía.</p>
+                </div>
+
+                <div class="card-custom">
+                    <div class="card-icon"><i class="fa-solid fa-hands-praying"></i></div>
+                    <h3>Nuestro Propósito</h3>
+                    <p>Ofrecer oraciones y sacrificios por las necesidades de la Iglesia, el Papa, las familias y la conversión de los pecadores, cumpliendo con fervor nuestro compromiso espiritual.</p>
+                </div>
+
+                <div class="card-custom">
+                    <!-- Imagen de la Parroquia -->
+                    <img src="logo_anm.jpeg" alt="logo" class="img-card">
+                    <h3>Nuestra Sede</h3>
+                    <p>Pertenecemos a la Sección San Juan Bautista en <strong>San Juan de las Huertas, Zinacantepec, EDOMEX.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificado Conmemorativo del 95 Aniversario -->
+    <section class="section bg-light-custom pt-0">
+        <div class="container text-center">
+            <h2 class="section-title">95.° Aniversario de Fundación</h2>
+            <p class="section-subtitle">Agradeciendo profundamente la fraternidad y colaboración para mantener viva la devoción a Nuestro Señor Jesucristo Sacramentado</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="card-custom p-3">
+                        <img src="Certificado 95 ANM final.png" alt="Certificado 95 Aniversario ANM" class="img-fluid rounded border border-warning shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estación Mayor al Santísimo Sacramento -->
+    <section id="estacion-mayor" class="section">
+        <div class="container">
+            <h2 class="section-title">Estación Mayor al Santísimo Sacramento</h2>
+
+            <div class="estacion-mayor-container">
+                <!-- 1ra Estación -->
+                <div class="estacion-card">
+                    <h3>1ª Estación</h3>
+                    <p><strong>Intención:</strong> Ofrecida por las intenciones de los Obispos Mexicanos.</p>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 1er Padre Nuestro por la Santísima llaga de tu mano derecha y te pedimos por el Papa, los Obispos, Religiosas y Religiosos.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+
+                <!-- 2da Estación -->
+                <div class="estacion-card">
+                    <h3>2ª Estación</h3>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 2º Padre Nuestro por la Santísima llaga de tu mano izquierda y te pedimos por los cristianos perseguidos a causa de tu nombre.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+
+                <!-- 3ra Estación -->
+                <div class="estacion-card">
+                    <h3>3ª Estación</h3>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 3er Padre Nuestro por la Santísima llaga de tu pie derecho y te pedimos por la preciosa sangre derramada de dicha llaga: broten en tu Iglesia, buenas y generosas vocaciones.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+
+                <!-- 4ta Estación -->
+                <div class="estacion-card">
+                    <h3>4ª Estación</h3>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 4to Padre Nuestro por la Santísima llaga de tu pie izquierdo y te pedimos por el perdón de nuestras culpas y la conversión de la humanidad.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+
+                <!-- 5ta Estación -->
+                <div class="estacion-card">
+                    <h3>5ª Estación</h3>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 5to Padre Nuestro por los ancianos, los enfermos y por los más necesitados de gracia.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+
+                <!-- 6ta Estación -->
+                <div class="estacion-card">
+                    <h3>6ª Estación</h3>
+                    <h4>Oración:</h4>
+                    <p>SEÑOR JESÚS: Te ofrecemos este 6to Padre Nuestro por las intenciones del Santo Padre.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-cross"></i> Padre Nuestro...</li>
+                        <li><i class="fa-solid fa-cross"></i> Dios te Salve María...</li>
+                        <li><i class="fa-solid fa-cross"></i> Gloria al Padre...</li>
+                    </ul>
+                    <p class="mt-2">Alabemos y demos gracias en todo instante y momento al... <em>Santísimo y Divinísimo Sacramento.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE EVENTOS Y CONFIRMACIÓN DE ASISTENCIA (Con Bootstrap 5 y Estilos Rojos/Dorados) -->
+    <section id="eventos" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Próximos Eventos Festivos</h2>
+            <p class="section-subtitle">Consulta las fechas solemnes y confirma tu asistencia</p>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <!-- Tarjetas de Eventos -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm card-evento-espigas">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-sun-fill text-warning fs-2 me-3"></i>
+                                        <h3 class="card-title mb-0 fs-4 text-danger fw-bold">Espigas</h3>
+                                    </div>
+                                    <p class="card-text text-secondary mb-2">
+                                        <strong>Fecha:</strong> <span id="fecha-espigas" class="badge badge-espigas fs-6 p-2">Cargando...</span>
+                                    </p>
+                                    <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>Cada 3er sábado de mayo</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm card-evento-vigilia">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-moon-stars-fill text-danger fs-2 me-3"></i>
+                                        <h3 class="card-title mb-0 fs-4 text-danger fw-bold">Vigilia del Aniversario de Fundacion</h3>
+                                    </div>
+                                    <p class="card-text text-secondary mb-2">
+                                        <strong>Fecha:</strong> <span id="fecha-vigilia" class="badge badge-vigilia fs-6 p-2">Cargando...</span>
+                                    </p>
+                                    <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>Cada 3er sábado de septiembre</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de Confirmación de Asistencia -->
+                    <div class="card shadow border-0 overflow-hidden">
+                        <div class="card-header header-confirmacion text-center py-3">
+                            <h3 class="mb-0 fs-4"><i class="bi bi-check-circle-fill me-2"></i>Confirmación de Asistencia</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="form-confirmacion-asistencia" action="#" method="POST">
+                                <div class="mb-3">
+                                    <label for="asistencia-nombre" class="form-label fw-bold text-danger">Nombre completo:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-person-fill text-danger"></i></span>
+                                        <input type="text" class="form-control border-start-0" id="asistencia-nombre" name="nombre" placeholder="Escribe tu nombre y apellido" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="asistencia-seccion" class="form-label fw-bold text-danger">Sección:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-people-fill text-danger"></i></span>
+                                        <input type="text" class="form-control border-start-0" id="asistencia-seccion" name="seccion" placeholder="Escribe tu sección" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="asistencia-evento" class="form-label fw-bold text-danger">Evento al que asistes:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-calendar-check-fill text-danger"></i></span>
+                                        <select class="form-select border-start-0" id="asistencia-evento" name="evento" required>
+                                            <option value="" selected disabled>-- Selecciona un evento --</option>
+                                            <option value="Espigas">Espigas (Mayo)</option>
+                                            <option value="Vigilia Solemne">Vigilia Aniversario (Septiembre)</option>
+                                            <option value="Ambos">Ambos eventos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-custom w-100 text-center">
+                                        <i class="bi bi-send-fill me-2"></i>Confirmar Mi Asistencia
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner con la foto de la Parroquia -->
+    <div class="banner-parroquia">
+        <div class="container">
+            <h2>Parroquia de San Juan Bautista</h2>
+            <p class="fs-5">San Juan de las Huertas, Zinacantepec, Estado de México</p>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contáctanos y Únete</h2>
+            <p class="section-subtitle">¿Deseas participar en nuestras vigilias o tienes alguna duda?</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>San Juan de las Huertas, Zinacantepec, México</p>
+                            <a href="https://maps.app.goo.gl/kckXgPNY9C5bLwh4A?g_st=ac" target="_blank" class="btn-custom py-2 px-3 fs-6">Abrir Ubicación</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h4>Horarios de Vigilia</h4>
+                            <p><strong>3er Sábado de cada mes</strong></p>
+                            <p>De 10:00 pm a 6:00 am</p>
+                            <p>En las vigilias solemnes iniciamos a las 18:00 hrs con la junta de turno</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fa-brands fa-facebook"></i>
+                        <div>
+                            <h4>Página de Facebook</h4>
+                            <a href="https://www.facebook.com/share/1H6NsVWM5r/" target="_blank" class="btn-custom py-2 px-3 fs-6">Visítanos en Facebook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="form-contacto">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Juan Salas Pérez">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" required placeholder="10 dígitos numéricos">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o Solicitud de Información</label>
+                        <textarea id="mensaje" rows="4" name="mensaje" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-custom w-100 mb-2">Enviar Mensaje</button>
+                    <p id="form-msg" class="mt-3 text-center text-success fw-bold" style="display:none;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mesa Directiva -->
+    <section id="mesa-directiva" class="mesa-directiva">
+        <div class="mesa-container">
+            <div class="mesa-header">
+                <span class="mesa-badge">ADORACIÓN NOCTURNA MEXICANA</span>
+                <h2>Mesa Directiva 2025–2028</h2>
+                <p>Conformada por:</p>
+            </div>
+
+            <div class="directiva-grid">
+                <!-- Presidente -->
+                <article class="directiva-card">
+                    <div class="directiva-icon">♛</div>
+                    <h3>Presidente</h3>
+                    <h4>Heriberto Rico Miranda</h4>
+                </article>
+
+                <!-- Secretario -->
+                <article class="directiva-card">
+                    <div class="directiva-icon">✒</div>
+                    <h3>Secretario</h3>
+                    <h4>Lic. Mario Ortega Perez</h4>
+                </article>
+
+                <!-- Jefe de Turno -->
+                <article class="directiva-card">
+                    <div class="directiva-icon">✦</div>
+                    <h3>Jefe de Turno</h3>
+                    <h4>Tec. Programación. Alexys Miranda Martinez</h4>
+                </article>
+
+                <!-- Tesorera -->
+                <article class="directiva-card">
+                    <div class="directiva-icon">◆</div>
+                    <h3>Tesorera</h3>
+                    <h4>Anabel Vargas Talita</h4>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <!-- Pie de página con enlace al Aviso de Privacidad -->
+    <footer>
+        <p class="mb-1">&copy; 2026 Adoración Nocturna Mexicana - Sección San Juan Bautista. Tec PGN. Alexys Miranda. Todos los derechos reservados.</p>
+        <small><a href="#" class="text-warning text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalPrivacidad"><i class="bi bi-shield-check me-1"></i>Aviso de Privacidad</a></small>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Cálculo del 3er Sábado de Mayo y Septiembre
+    function obtenerTercerSabado(anio, mesIndex) {
+        let contadorSabados = 0;
+        let fecha = new Date(anio, mesIndex, 1);
+
+        while (fecha.getMonth() === mesIndex) {
+            if (fecha.getDay() === 6) {
+                contadorSabados++;
+                if (contadorSabados === 3) {
+                    return fecha;
+                }
+            }
+            fecha.setDate(fecha.getDate() + 1);
+        }
+    }
+
+    function mostrarFechas() {
+        const hoy = new Date();
+        let anioActual = hoy.getFullYear();
+
+        let fechaEspigas = obtenerTercerSabado(anioActual, 4);
+        if (hoy > fechaEspigas) {
+            fechaEspigas = obtenerTercerSabado(anioActual + 1, 4);
+        }
+
+        let fechaVigilia = obtenerTercerSabado(anioActual, 8);
+        if (hoy > fechaVigilia) {
+            fechaVigilia = obtenerTercerSabado(anioActual + 1, 8);
+        }
+
+        const opcionesFormato = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+        document.getElementById('fecha-espigas').textContent = fechaEspigas.toLocaleDateString('es-ES', opcionesFormato);
+        document.getElementById('fecha-vigilia').textContent = fechaVigilia.toLocaleDateString('es-ES', opcionesFormato);
+    }
+
+    // Menú móvil
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (mobileMenu && navMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // ENVÍO DE FORMULARIO DE ASISTENCIA A LA BASE DE DATOS
+    const formAsistencia = document.getElementById('form-confirmacion-asistencia');
+    if (formAsistencia) {
+        formAsistencia.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(formAsistencia);
+            formData.append('accion', 'asistencia');
+
+            try {
+                const response = await fetch('guardar.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const res = await response.json();
+                
+                alert(res.message);
+                if (res.status === 'success') {
+                    formAsistencia.reset();
+                }
+            } catch (error) {
+                alert('Hubo un error al enviar los datos.');
+            }
+        });
+    }
+
+    // ENVÍO DE FORMULARIO DE CONTACTO A LA BASE DE DATOS
+    const formContacto = document.getElementById('form-contacto');
+    const formMsg = document.getElementById('form-msg');
+
+    if (formContacto && formMsg) {
+        formContacto.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(formContacto);
+            formData.append('accion', 'contacto');
+
+            try {
+                const response = await fetch('guardar.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const res = await response.json();
+
+                formMsg.textContent = res.message;
+                formMsg.style.display = 'block';
+                
+                if (res.status === 'success') {
+                    formContacto.reset();
+                }
+
+                setTimeout(() => { formMsg.style.display = 'none'; }, 5000);
+            } catch (error) {
+                formMsg.textContent = 'Hubo un error al procesar la solicitud.';
+                formMsg.style.display = 'block';
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', mostrarFechas);
+</script>
+</body>
+</html>
